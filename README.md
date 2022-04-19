@@ -6,7 +6,7 @@ _____
 
 # **Data Availability and preprocesing**
 I've merged several publicly available datasets.
-Data I used is available [here](https://mega.nz/file/ksdhiApA#14L2kG7aI6ep06fJEXVqN7OAQ5DzzOZjSsz_HwlluSc)
+Data I used is available [here](https://mega.nz/file/ksdhiApA#14L2kG7aI6ep06fJEXVqN7OAQ5DzzOZjSsz_HwlluSc) or in Model folder
 
 Data was resized to 224x224 pixels and normalized. 
 
