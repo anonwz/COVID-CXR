@@ -18,7 +18,7 @@ I've implemented and tried both State-Of-Art models and models from scratch. Exp
 
 # **Results and comparisons**
 
-| metrics             | our model | [RA20](https://doi.org/https://doi.org/10.1016/j.imu.2020.100360)   | [Sad+21](https://www.nature.com/articles/s41598-021-95561-y) | [MSH22](https://doi.org/https://doi.org/10.1016/j.eij.2022.01.002)  | [Luj+20](https://doi.org/10.3390/math8091423) | [Bac+21](https://doi.org/10.1101/2021.07.15.21260605) |
+| amount             | our model | [RA20](https://doi.org/https://doi.org/10.1016/j.imu.2020.100360)   | [Sad+21](https://www.nature.com/articles/s41598-021-95561-y) | [MSH22](https://doi.org/https://doi.org/10.1016/j.eij.2022.01.002)  | [Luj+20](https://doi.org/10.3390/math8091423) | [Bac+21](https://doi.org/10.1101/2021.07.15.21260605) |
 |---------------------|-----------|--------|--------|--------|--------|--------|
 | precision healthy   | 99.3%     | 97.2%  | 90.5%  | 96.26% | 62%    | 94%    |
 | recall healthy      | 99.7%     | 97.2%  | 95%    | 98.57% | 99%    | 94%    |
@@ -33,4 +33,90 @@ I've implemented and tried both State-Of-Art models and models from scratch. Exp
 | accuracy COVID-19   | 99.6%     | 96.7%  |        | 99.4%  | 99.7%  | 99.38% |
 | accuracy pneumonia  | 99.6%     | 93.8%  |        | 99.23% | 86.43% | 97.05% |
 | total accuracy      | 99.32%    | 94.79% | 93.3%  | 96.56% | 91%    | 96.74  |
+___________________
+| metrics             | our model | [RA20](https://doi.org/https://doi.org/10.1016/j.imu.2020.100360)   | [Sad+21](https://www.nature.com/articles/s41598-021-95561-y) | [MSH22](https://doi.org/https://doi.org/10.1016/j.eij.2022.01.002)  | [Luj+20](https://doi.org/10.3390/math8091423) | [Bac+21](https://doi.org/10.1101/2021.07.15.21260605) |
+|-----------|-------|-------|-------|-----------|------|------|
+| COVID-19  | 5205  | 180   | 617   | 70(min)   | 287  | 576  |
+| pneumonia | 4270  | 6054  | 6069  | 4273(min) | 4273 | 4273 |
+| healthy   | 10092 | 8851  | 8851  | 1611(min) | 1583 | 1583 |
+| total     | 19567 | 15085 | 15537 | 7512      | 6143 | 6432 |
+_______________
 
+"min" in [MSH22](https://doi.org/https://doi.org/10.1016/j.eij.2022.01.002) section indicates that given amount was used undoubtly. Information about the rest of the images was not given in the paper.
+
+# Usage of our model
+If you'd like to try out and test my model on some X-Rays from archive or your own images you can do it following these steps.
+## Dependencies
++ python 
++ keras
++ tensorflow
++ matplotlib
++ cv2
++ sklearn
++ seaborn
+## How to load
+Download and unarchive the [zip file](https://mega.nz/file/ksdhiApA#14L2kG7aI6ep06fJEXVqN7OAQ5DzzOZjSsz_HwlluSc) and place it where you want.
+
+Import necessary dependencies
+```python
+import seaborn as sns
+import os
+import keras
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import tensorflow as tf
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+```
+
+Then use
+```python
+model = keras.models.load_model('YourPath/Diplom96nevBN224')
+```
+where 'YourPath' is path to unarchived folder.
+
+```python
+input_path = 'path_to_unarchived_folder'
+img_dims=224
+```
+
+Then we need to preprocess our images
+
+```python
+def process_data2(img_dims):
+    test_data = []
+    test_labels = []
+    for cond in ['/COVID/', '/NORMAL/', '/PNEUMONIA/']:
+        for img in (os.listdir(input_path + '/' + 'test' + cond)):
+            img = cv2.imread(input_path+ '/' + 'test'+cond+img)
+            img = cv2.resize(img, (img_dims, img_dims))
+            if cond=='/NORMAL/':
+                label = 1
+            elif cond=='/PNEUMONIA/':
+                label = 2
+            elif cond=='/COVID/':
+                label = 0
+            test_data.append(img)
+            test_labels.append(label)
+        
+    test_data = np.array(test_data) / 255.0
+    test_labels = np.array(test_labels)
+    
+    return test_data, test_labels
+test_data, test_labels = process_data2(img_dims)
+```
+Evaluate it and print confusion matrix
+```python
+preds = model.predict(test_data)
+predIdxs = np.argmax(preds,axis=1)
+cm=confusion_matrix(test_labels, predIdxs, labels =[0, 1, 2])
+ax = sns.heatmap(cm, annot=True, fmt=".0f", cmap="Blues", xticklabels=["NORMAL", "PNEUMONIA", "COVID"], yticklabels=["NORMAL", "PNEUMONIA", "COVID"])
+ax.set_xlabel('Predicted')
+ax.set_ylabel('Actual');
+```
+
+
+
+_Full paper will be translated and available soon._
+_Stay tuned for updates._
