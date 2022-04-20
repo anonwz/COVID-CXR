@@ -7,7 +7,7 @@ src = 'G:/BrixData/BRIXALLDICOM' #source folder
 dst = 'G:/BrixData/brixparsev3/18' #destination folder
 
 count = 0
-with open('G:/BrixData/18.txt', 'r') as openfile:
+with open('Path_to_TXT_containing_names_of_images', 'r') as openfile:
     Lines = openfile.readlines()
     for line in Lines:
          check_file = os.path.exists(src + '/' +  Lines[count].strip())
