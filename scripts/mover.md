@@ -1,0 +1,1 @@
+Using this script, I was able to separate the images into the appropriate folders depending on the class they belong to by transferring the information about belonging to the class from the CSV file(included in original datasets) to the corresponding TXT document and using it instead.
