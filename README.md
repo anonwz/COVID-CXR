@@ -55,7 +55,7 @@ If you'd like to try out and test my model on some X-Rays from archive or your o
 + sklearn
 + seaborn
 ## How to load
-Download and unarchive the [zip file](https://mega.nz/file/ksdhiApA#14L2kG7aI6ep06fJEXVqN7OAQ5DzzOZjSsz_HwlluSc) and place it where you want.
+Download and unarchive the [zip file](https://mega.nz/file/ksdhiApA#14L2kG7aI6ep06fJEXVqN7OAQ5DzzOZjSsz_HwlluSc) and unpack it where you want.
 
 Import necessary dependencies
 ```python
