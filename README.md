@@ -18,7 +18,7 @@ I've implemented and tried both State-Of-Art models and models from scratch. Exp
 
 # **Results and comparisons**
 
-| amount             | our model | [RA20](https://doi.org/https://doi.org/10.1016/j.imu.2020.100360)   | [Sad+21](https://www.nature.com/articles/s41598-021-95561-y) | [MSH22](https://doi.org/https://doi.org/10.1016/j.eij.2022.01.002)  | [Luj+20](https://doi.org/10.3390/math8091423) | [Bac+21](https://doi.org/10.1101/2021.07.15.21260605) |
+| metrics             | our model | [RA20](https://doi.org/https://doi.org/10.1016/j.imu.2020.100360)   | [Sad+21](https://www.nature.com/articles/s41598-021-95561-y) | [MSH22](https://doi.org/https://doi.org/10.1016/j.eij.2022.01.002)  | [Luj+20](https://doi.org/10.3390/math8091423) | [Bac+21](https://doi.org/10.1101/2021.07.15.21260605) |
 |---------------------|-----------|--------|--------|--------|--------|--------|
 | precision healthy   | 99.3%     | 97.2%  | 90.5%  | 96.26% | 62%    | 94%    |
 | recall healthy      | 99.7%     | 97.2%  | 95%    | 98.57% | 99%    | 94%    |
@@ -34,7 +34,7 @@ I've implemented and tried both State-Of-Art models and models from scratch. Exp
 | accuracy pneumonia  | 99.6%     | 93.8%  |        | 99.23% | 86.43% | 97.05% |
 | total accuracy      | 99.32%    | 94.79% | 93.3%  | 96.56% | 91%    | 96.74  |
 ___________________
-| metrics             | our model | [RA20](https://doi.org/https://doi.org/10.1016/j.imu.2020.100360)   | [Sad+21](https://www.nature.com/articles/s41598-021-95561-y) | [MSH22](https://doi.org/https://doi.org/10.1016/j.eij.2022.01.002)  | [Luj+20](https://doi.org/10.3390/math8091423) | [Bac+21](https://doi.org/10.1101/2021.07.15.21260605) |
+| amount             | our model | [RA20](https://doi.org/https://doi.org/10.1016/j.imu.2020.100360)   | [Sad+21](https://www.nature.com/articles/s41598-021-95561-y) | [MSH22](https://doi.org/https://doi.org/10.1016/j.eij.2022.01.002)  | [Luj+20](https://doi.org/10.3390/math8091423) | [Bac+21](https://doi.org/10.1101/2021.07.15.21260605) |
 |-----------|-------|-------|-------|-----------|------|------|
 | COVID-19  | 5205  | 180   | 617   | 70(min)   | 287  | 576  |
 | pneumonia | 4270  | 6054  | 6069  | 4273(min) | 4273 | 4273 |
