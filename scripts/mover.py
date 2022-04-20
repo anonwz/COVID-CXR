@@ -3,8 +3,8 @@ import os.path
 import os
 from shutil import copyfile
 
-src = 'G:/BrixData/BRIXALLDICOM' #source folder
-dst = 'G:/BrixData/brixparsev3/18' #destination folder
+src = 'Path_to_source_folder'
+dst = 'Path_to_destination_folder'
 
 count = 0
 with open('Path_to_TXT_containing_names_of_images', 'r') as openfile:
